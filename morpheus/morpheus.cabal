@@ -16,6 +16,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Network.Matrix
+                     , Network.Matrix.Types.Login
   build-depends:       base
                      , aeson
                      , containers

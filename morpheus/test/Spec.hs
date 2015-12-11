@@ -9,13 +9,14 @@ spec :: Spec
 spec =
         describe "Matrix client" $ do
             it "should let you log into an account" $ do
-                username' <- getEnv "MATRIX_USER"
-                password' <- getEnv "MATRIX_PASSWORD"
+                username'   <- getEnv "MATRIX_USER"
+                password'   <- getEnv "MATRIX_PASSWORD"
                 homeserver' <- getEnv "MATRIX_HOMESERVER"
-                c <- login username' password' homeserver'
+                c <- login (Text.pack username') (Text.pack password') (Text.pack homeserver')
 
-                shouldBe (username c) username'
-            it "has funciton foo" $ foo `shouldBe` "bar"
+                username c `shouldBe` Text.pack username'
+            it "has function foo" $
+                foo `shouldBe` "bar"
 
 main :: IO ()
 main = hspec spec
