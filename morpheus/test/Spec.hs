@@ -4,6 +4,10 @@ import Network.Matrix
 import Test.Hspec (Spec, hspec, describe, it, shouldSatisfy, shouldNotSatisfy, shouldBe)
 import System.Environment (getEnv)
 import qualified Data.Text as Text
+import Data.Aeson
+import qualified Data.ByteString.Lazy as B
+import qualified Data.ByteString.Lazy.Char8 as C
+import Network.Matrix.Types.Event
 
 spec :: Spec
 spec =
@@ -18,5 +22,18 @@ spec =
             it "has function foo" $
                 foo `shouldBe` "bar"
 
+anEvent :: String
+anEvent = "{ \"content\": { \"body\": \"Hello world!\", \"msgtype\": \"m.text\" }, \"room_id:\": \"!wfgy43Sg4a:matrix.org\", \"sender\": \"@bob:matrix.org\", \"event_id\": \"$asfDuShaf7Gafaw:matrix.org\", \"type\": \"m.room.message\" }"
+
+eventSpec :: Spec
+eventSpec =
+        describe "An Event" $
+            it "should be parseable from json" $ do
+                let myEvent = eitherDecode (C.pack anEvent) :: Either String Event
+
+                case myEvent of
+                    Left e  -> error e
+                    Right e -> print e
+
 main :: IO ()
-main = hspec spec
+main = hspec spec >> hspec eventSpec

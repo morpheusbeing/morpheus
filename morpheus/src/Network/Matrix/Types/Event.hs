@@ -20,32 +20,18 @@ data Type = PowerLevels
           | Other Text
           deriving (Eq, Show)
 
-data UnsignedData = UnsignedData
-                  { age :: Int
-                  , redacted_because :: Text
-                  , transaction_id :: Text
-                  } deriving(Show, Eq, Generic)
-
-instance ToJSON UnsignedData where
-
-instance FromJSON UnsignedData where
-
 data Event = Event
            { type'        :: Text
-           , id'          :: Text
+           , eventID      :: Text
            , roomID       :: Text
            , sender       :: Text
-           , unsignedData :: UnsignedData
            , content      :: Map.HashMap Text Text
-           }
+           } deriving(Show)
 
 instance FromJSON Event where
         parseJSON (Object v) = Event <$>
                                    v .: "type"
-                               <*> v .: "id"
+                               <*> v .: "event_id"
                                <*> v .: "room_id"
                                <*> v .: "sender"
-                               <*> v .: "unsigned"
                                <*> v .: "content"
-        parseJSON _          = empty
-
