@@ -23,7 +23,7 @@ spec =
                 foo `shouldBe` "bar"
 
 anEvent :: String
-anEvent = "{ \"content\": { \"body\": \"Hello world!\", \"msgtype\": \"m.text\" }, \"room_id:\": \"!wfgy43Sg4a:matrix.org\", \"sender\": \"@bob:matrix.org\", \"event_id\": \"$asfDuShaf7Gafaw:matrix.org\", \"type\": \"m.room.message\" }"
+anEvent = "{ \"content\": { \"body\": \"Hello world!\", \"msgtype\": \"m.text\" }, \"room_id\": \"!wfgy43Sg4a:matrix.org\", \"sender\": \"@bob:matrix.org\", \"event_id\": \"$asfDuShaf7Gafaw:matrix.org\", \"type\": \"m.room.message\" }"
 
 eventSpec :: Spec
 eventSpec =
