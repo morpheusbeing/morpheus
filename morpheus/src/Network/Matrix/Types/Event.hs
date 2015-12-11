@@ -21,11 +21,11 @@ data Type = PowerLevels
           deriving (Eq, Show)
 
 data Event = Event
-           { type'        :: Text
-           , eventID      :: Text
-           , roomID       :: Text
-           , sender       :: Text
-           , content      :: Map.HashMap Text Text
+           { type'   :: Text
+           , eventID :: Text
+           , roomID  :: Text
+           , sender  :: Text
+           , content :: Map.HashMap Text Text
            } deriving(Show)
 
 instance FromJSON Event where
