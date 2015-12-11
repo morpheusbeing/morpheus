@@ -22,6 +22,12 @@ data ClientHandle = ClientHandle
                   , homeserver :: Text
                   } deriving (Show)
 
+urlGen :: ClientHandle -> String -> String
+urlGen c =
+        (++) homeserver'
+        where
+            homeserver' = Text.unpack $ c homeserver
+
 login :: Text -> Text -> Text -> IO ClientHandle
 login username' password homeserver' = do
         let url = Text.unpack homeserver' ++ "/_matrix/client/api/v1/login" :: String
