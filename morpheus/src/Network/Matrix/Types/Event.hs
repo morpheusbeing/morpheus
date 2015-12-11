@@ -29,8 +29,8 @@ data Event = Event
            } deriving(Show)
 
 instance FromJSON Event where
-        parseJSON (Object v) = Event <$>
-                                   v .: "type"
+        parseJSON (Object v) = Event
+                               <$> v .: "type"
                                <*> v .: "event_id"
                                <*> v .: "room_id"
                                <*> v .: "sender"
