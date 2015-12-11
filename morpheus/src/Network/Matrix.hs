@@ -12,6 +12,7 @@ import qualified Data.Text as Text
 import Network.Wreq
 
 import qualified Network.Matrix.Types.Login as Login
+import qualified Network.Matrix.Types.Event as Event
 
 foo :: String
 foo = "bar"
@@ -26,7 +27,7 @@ urlGen :: ClientHandle -> String -> String
 urlGen c =
         (++) homeserver'
         where
-            homeserver' = Text.unpack $ c homeserver
+            homeserver' = Text.unpack $ homeserver c
 
 login :: Text -> Text -> Text -> IO ClientHandle
 login username' password homeserver' = do

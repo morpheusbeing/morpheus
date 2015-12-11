@@ -17,9 +17,11 @@ library
   hs-source-dirs:      src
   exposed-modules:     Network.Matrix
                      , Network.Matrix.Types.Login
+                     , Network.Matrix.Types.Event
   build-depends:       base
                      , aeson
                      , containers
+                     , unordered-containers
                      , wreq
                      , lens
                      , lens-aeson
