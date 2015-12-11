@@ -15,6 +15,6 @@ data Login = Login
 instance ToJSON Login where
     toJSON (Login type' username password) =
         object [ "type"     .= type'
-               , "username" .= username
+               , "user"     .= username
                , "password" .= password
                ]
