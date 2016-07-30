@@ -1,3 +1,7 @@
+-- file: Matrix.hs
+-- author: Xe
+-- date: 2016
+--
 {-# LANGUAGE OverloadedStrings #-}
 
 module Network.Matrix where
@@ -15,7 +19,7 @@ import qualified Network.Matrix.Types.Login as Login
 import qualified Network.Matrix.Types.Event as Event
 
 foo :: String
-foo = "bar"
+foo = "test of morpheus bar"
 
 data ClientHandle = ClientHandle
                   { username   :: Text
@@ -23,12 +27,18 @@ data ClientHandle = ClientHandle
                   , homeserver :: Text
                   } deriving (Show)
 
+--
+-- | 'urlGen' - 
+--
 urlGen :: ClientHandle -> String -> String
 urlGen c =
         (++) homeserver'
         where
             homeserver' = Text.unpack $ homeserver c
 
+--
+-- | 'login' - 
+--
 login :: Text -> Text -> Text -> IO ClientHandle
 login username' password homeserver' = do
         let url = Text.unpack homeserver' ++ "/_matrix/client/api/v1/login" :: String
@@ -46,3 +56,5 @@ login username' password homeserver' = do
             , token      = accessToken'
             , homeserver = homeserver'
             }
+
+            

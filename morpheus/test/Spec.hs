@@ -1,3 +1,7 @@
+-- file: Spec.hs
+-- author: Xe 
+-- date: 2016
+-- 
 {-# LANGUAGE OverloadedStrings #-}
 
 import Network.Matrix

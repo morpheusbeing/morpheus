@@ -1,3 +1,7 @@
+-- file: Event.hs
+-- author: Xe
+-- date:
+--
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DeriveGeneric     #-}
 
